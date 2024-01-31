@@ -1,0 +1,7 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://c4ygxf4iadqx6"]
+
+[ext_resource type="Shader" path="res://Materials/M_Color.gdshader" id="1_4rnol"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4rnol")
