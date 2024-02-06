@@ -1,8 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://t8mlj6krejxu"]
+[gd_scene load_steps=14 format=3 uid="uid://t8mlj6krejxu"]
 
 [ext_resource type="Script" path="res://Scripts/World.cs" id="1_8oiy6"]
 [ext_resource type="PackedScene" uid="uid://cfmu2warlxljj" path="res://Resources/Rs_Player.tscn" id="1_xt5bd"]
-[ext_resource type="Script" path="res://Scripts/Voids.cs" id="3_fvc04"]
+[ext_resource type="Script" path="res://Scripts/Boids.cs" id="3_fvc04"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_rwvvj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -28,7 +28,15 @@ data = PackedVector3Array(50, 0, 50, -50, 0, 50, 50, 0, -50, -50, 0, 50, -50, 0,
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44wv0"]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lwlpm"]
+
 [sub_resource type="SphereMesh" id="SphereMesh_ldfd3"]
+material = SubResource("StandardMaterial3D_lwlpm")
+radius = 0.2
+height = 0.5
+radial_segments = 8
+rings = 9
+is_hemisphere = true
 
 [sub_resource type="MultiMesh" id="MultiMesh_ovfax"]
 transform_format = 1
@@ -58,11 +66,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 linear_damp = 5.0
 Speed = 3000.0
 
-[node name="Voids" type="MultiMeshInstance3D" parent="." node_paths=PackedStringArray("player")]
+[node name="Boids" type="MultiMeshInstance3D" parent="." node_paths=PackedStringArray("player")]
+process_thread_group = 2
+process_thread_group_order = 0
+process_thread_messages = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.76088, 0)
 material_override = SubResource("StandardMaterial3D_44wv0")
 multimesh = SubResource("MultiMesh_ovfax")
 script = ExtResource("3_fvc04")
 player = NodePath("../Player")
-speed = 1.0
-distance = 40.0
+amount = 2000
+speedCorrection = 0.451
+bounds = Vector3(30, 10, 30)
+boundsYOffset = 13.0
+boundsAvoidanceStrength = 1.969
+boundsDeflectionStrength = 7.248
+neighbourInfluenceRadius = 3.0
+neighbourInfluenceStrength = 0.663
+showCost = true

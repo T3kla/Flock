@@ -1,15 +1,17 @@
 using Godot;
 
+namespace Flock;
+
 public partial class Player : RigidBody3D
 {
-    [Export] public float Speed = 1000f;
+    [Export] float Speed = 1000f;
 
-    [Export] public float CameraVerticalSensitivity = 0.001f;
-    [Export] public float CameraHorizontalSensitivity = 0.001f;
-    [Export] public Node3D CameraPivotYaw = null;
-    [Export] public Node3D CameraPivotPitch = null;
-    [Export] public Node3D Camera = null;
-    [Export] public Vector2 CameraPitchLimit = new(-1.5f, 1.5f);
+    [Export] float CameraVerticalSensitivity = 0.001f;
+    [Export] float CameraHorizontalSensitivity = 0.001f;
+    [Export] Node3D CameraPivotYaw = null;
+    [Export] Node3D CameraPivotPitch = null;
+    [Export] Node3D Camera = null;
+    [Export] Vector2 CameraPitchLimit = new(-1.5f, 1.5f);
 
     Vector3 input = Vector3.Zero;
 
